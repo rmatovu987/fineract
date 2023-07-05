@@ -25,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Arrays;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.fineract.accounting.closure.domain.GLClosure;
@@ -382,6 +383,12 @@ public class AccountingProcessorHelper {
                 createCreditJournalEntryForLoan(office, currencyCode, account, loanId, transactionId, transactionDate, amount);
             }
         }
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("Total amount: "+totalAmount);
+        System.out.println("Total credited amount: "+totalCreditedAmount);
+        System.out.println(Arrays.toString(chargePaymentDTOs.toArray()));
+        System.out.println(Arrays.toString(creditDetailsMap.entrySet().toArray()));
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
         if (totalAmount.compareTo(totalCreditedAmount) != 0) {
             throw new PlatformDataIntegrityException(
